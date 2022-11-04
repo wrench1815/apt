@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "apt-back"
+version = "0.1.0"
+description = "backend for Assist 2 Path Tech Assignment"
+authors = ["wrench1815 <hardeepkumar1815@gmail.com>"]
+readme = "README.md"
+packages = [{include = "apt_back"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^4.1.3"
+yapf = "^0.32.0"
+toml = "^0.10.2"
+djangorestframework = "^3.14.0"
+
+[tool.yapf]
+based_on_style = "pep8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
