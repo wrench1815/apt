@@ -20,7 +20,7 @@ function formattedDate(inputDate: string) {
 <template>
   <div class="card card-bod">
     <div class="table-responsive">
-      <table class="table table-hover">
+      <table class="table">
         <thead class="bg-primary text-white fs-6">
           <tr>
             <th scope="col">Name</th>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Table from '@/components/Table.vue';
 import Search from '@/components/Search.vue';
+import ProductModal from '@/components/ProductModal.vue';
 
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
@@ -16,6 +17,13 @@ async function getProducts() {
   });
 }
 
+async function refreshProducts() {
+  loading.value = true;
+  return getProducts().then(() => {
+    loading.value = false;
+  });
+}
+
 onMounted(() => {
   getProducts().then(() => {
     loading.value = false;
@@ -25,13 +33,20 @@ onMounted(() => {
 
 <template>
   <div class="mt-2"></div>
-  <Search />
 
   <main class="container-fluid">
+    <Search />
     <div class="d-flex justify-content-end my-4">
-      <button class="btn btn-rounded btn-primary">Add new Product</button>
+      <button
+        class="btn btn-rounded btn-primary"
+        data-mdb-toggle="modal"
+        data-mdb-target="#AddProduct"
+      >
+        Add new Product
+      </button>
     </div>
 
     <Table v-if="!loading" :products="products" />
+    <ProductModal @product-add="refreshProducts" />
   </main>
 </template>
