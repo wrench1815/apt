@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import EditModal from '@/components/EditProductModal.vue';
+
 const props = defineProps<{
   products: Array<{
     id: number;
@@ -8,6 +10,8 @@ const props = defineProps<{
     date_added: string;
   }>;
 }>();
+
+const emit = defineEmits(['table-product-edit']);
 
 function formattedDate(inputDate: string) {
   const date = new Date(inputDate);
@@ -38,8 +42,19 @@ function formattedDate(inputDate: string) {
             <td>{{ formattedDate(product.date_added) }}</td>
             <td>
               <div>
-                <button class="btn btn-rounded btn-info">Edit</button>
+                <button
+                  class="btn btn-rounded btn-info"
+                  data-mdb-toggle="modal"
+                  :data-mdb-target="`#EditProduct${product.id}`"
+                >
+                  Edit
+                </button>
               </div>
+              <EditModal
+                :key="product.id"
+                :data="product"
+                @product-edit="$emit('table-product-edit')"
+              />
             </td>
           </tr>
         </tbody>

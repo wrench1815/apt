@@ -46,7 +46,11 @@ onMounted(() => {
       </button>
     </div>
 
-    <Table v-if="!loading" :products="products" />
+    <Table
+      v-if="!loading"
+      :products="products"
+      @table-product-edit="refreshProducts"
+    />
     <ProductModal @product-add="refreshProducts" />
   </main>
 </template>
