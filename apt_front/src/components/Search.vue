@@ -1,16 +1,22 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+const emit = defineEmits(['product-search']);
 const searchTerm = ref('');
 
-function searchProduct() {}
+function searchProduct() {
+  emit('product-search', searchTerm.value);
+}
 </script>
 
 <template>
-  <form class="w-aut" @submit.prevent="searchProduct">
+  <form
+    class="position-sticky top-0 card card-body search-form"
+    @submit.prevent="searchProduct"
+  >
     <div class="d-flex gap-1 flex-column flex-md-row">
       <input
-        type="search"
+        type="text"
         class="form-control"
         placeholder="Search Product"
         aria-label="Search"
@@ -22,4 +28,8 @@ function searchProduct() {}
   </form>
 </template>
 
-<style scoped></style>
+<style scoped>
+.search-form {
+  z-index: 1000 !important;
+}
+</style>

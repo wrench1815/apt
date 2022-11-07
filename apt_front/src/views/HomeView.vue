@@ -24,6 +24,14 @@ async function refreshProducts() {
   });
 }
 
+async function productSearch(product: string) {
+  return axios
+    .get(url + 'api/product/', { params: { search: product } })
+    .then((res) => {
+      products.value = res.data;
+    });
+}
+
 onMounted(() => {
   getProducts().then(() => {
     loading.value = false;
@@ -32,10 +40,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="mt-2"></div>
-
+  <Search @product-search="productSearch" />
   <main class="container-fluid">
-    <Search />
     <div class="d-flex justify-content-end my-4">
       <button
         class="btn btn-rounded btn-primary"

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import EditModal from '@/components/EditProductModal.vue';
+import NoData from '@/components/NoData.vue';
 
 const props = defineProps<{
   products: Array<{
@@ -34,7 +35,7 @@ function formattedDate(inputDate: string) {
             <th scope="col">Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody v-if="products.length != 0">
           <tr v-for="product in products" :key="product.id">
             <td>{{ product.name }}</td>
             <td>Rs. {{ product.price }}</td>
@@ -57,6 +58,11 @@ function formattedDate(inputDate: string) {
               />
             </td>
           </tr>
+        </tbody>
+        <tbody v-else>
+          <td colspan="5" class="bg-white">
+            <NoData class="mx-auto" message="No Products found" />
+          </td>
         </tbody>
       </table>
     </div>
