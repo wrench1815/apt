@@ -31,16 +31,16 @@ function formattedDate(inputDate: string) {
             <th scope="col">Name</th>
             <th scope="col">Price</th>
             <th scope="col">Quantity</th>
-            <th scope="col">Date added</th>
+            <th scope="col" class="text-nowrap">Date added</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody v-if="products.length != 0">
           <tr v-for="product in products" :key="product.id">
             <td>{{ product.name }}</td>
-            <td>Rs. {{ product.price }}</td>
+            <td class="text-nowrap">Rs. {{ product.price }}</td>
             <td>{{ product.quantity }} units</td>
-            <td>{{ formattedDate(product.date_added) }}</td>
+            <td class="text-nowrap">{{ formattedDate(product.date_added) }}</td>
             <td>
               <div>
                 <button
@@ -68,5 +68,3 @@ function formattedDate(inputDate: string) {
     </div>
   </div>
 </template>
-
-<style scoped></style>
