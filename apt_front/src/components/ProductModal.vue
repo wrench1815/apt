@@ -11,7 +11,7 @@ const product = ref({
 
 const emit = defineEmits(['product-add']);
 
-const url = 'http://localhost:8000/api/product/';
+const url = 'https://apt-back.onrender.com/api/product/';
 
 async function addProduct() {
   return axios
@@ -31,6 +31,9 @@ async function addProduct() {
 
 function modalClose() {
   const form = document.querySelector('#addProductForm') as HTMLFormElement;
+  product.value.name = '';
+  product.value.price = '';
+  product.value.quantity = '';
   form.reset();
 }
 

@@ -24,7 +24,7 @@ const product = ref<Product>({
 });
 
 const emit = defineEmits(['product-edit']);
-const url = 'http://localhost:8000/api/product/';
+const url = 'https://apt-back.onrender.com/api/product/';
 
 async function editProduct() {
   return axios

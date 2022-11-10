@@ -9,7 +9,7 @@ import { onMounted, ref } from 'vue';
 const products = ref([]);
 const loading = ref(true);
 
-const url = 'http://localhost:8000/';
+const url = 'https://apt-back.onrender.com/';
 
 async function getProducts() {
   return axios.get(url + 'api/product/').then((res) => {
@@ -59,4 +59,13 @@ onMounted(() => {
     />
     <ProductModal @product-add="refreshProducts" />
   </main>
+
+  <footer class="d-flex justify-content-center mt-4">
+    <a
+      href="https://github.com/wrench1815/apt"
+      target="_blank"
+      class="btn btn-dark"
+      >source code</a
+    >
+  </footer>
 </template>
